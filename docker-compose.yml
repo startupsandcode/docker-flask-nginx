@@ -2,13 +2,13 @@ version: '3'
 
 services:
 
-  dash_app:
-    container_name: dash_app
+  jm_app:
+    container_name: berniris_app
     restart: always
     build: ./dash_app
     ports:
-      - "8000:8000"
-    command: gunicorn -w 1 -b :8000 app:server
+      - "5020:5020"
+    command: gunicorn -w 1 -b :5020 john:server
 
 
   nginx:
@@ -18,4 +18,4 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - dash_app
+      - jm_app
